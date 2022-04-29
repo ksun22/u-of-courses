@@ -22,13 +22,13 @@ return (
             fontWeight={700}
             fontSize='35px'
             lineHeight={'110%'}
-            color={'pink.800'}
+            color={'pink.600'}
             >
             UChicago Course Evals <br />
             <Text
             paddingTop='20px'
             fontSize='75px' 
-            color={'pink.800'}>
+            color={'pink.700'}>
             Made Easy
             </Text>
           </Heading>

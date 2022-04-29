@@ -19,12 +19,12 @@ const Links = ['About', 'Contact'];
 
 const NavLink = ({ children }) => (
   <Link
-    px={5}
-    py={5}
+    px={2}
+    py={1}
     rounded={'md'}
     _hover={{
       textDecoration: 'underline',
-      bg: useColorModeValue('pink.500'),
+      bg: useColorModeValue('pink.700', 'pink.100'),
     }}
     href={'#'}>
     {children}
@@ -36,9 +36,8 @@ export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
-      <Box bg={useColorModeValue('pink.100')} px={10}>
-        <Flex alignItems={'center'} 
-        justifyContent={'space-between'}>
+      <Box bg={useColorModeValue('pink.100', 'pink.900')} px={10}>
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Flex>
             <NavLink>
             <Image 
@@ -46,27 +45,27 @@ export default function Nav() {
               src='https://cdn.shopify.com/s/files/1/0254/7518/6748/collections/Chicago_960x.png?v=1565993626' 
               alt='logo' />
             </NavLink>
-          
+          </Flex>
           <HStack spacing={8} alignItems={'center'}>
             <Box>
                 <Heading
                  fontSize='40px'
-                  color={'pink.800'}>
+                  color={'pink.700'}>
                     UofCourses
                     </Heading>
             </Box>
             <HStack
               as={'nav'}
-              align='center'
-              spacing={10}
+              spacing={4}
               display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
             </HStack>
+            <Button onClick={toggleColorMode}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
           </HStack>
-          </Flex>
-          <HStack>
           <IconButton
             size={'md'}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -74,10 +73,6 @@ export default function Nav() {
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-              </Button>
-          </HStack>
         </Flex>
 
         {isOpen ? (
